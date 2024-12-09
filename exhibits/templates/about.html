@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>О нас</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="{% static 'img/logo.png' %}" alt="Логотип" class="logo">
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'about' %}">О нас</a></li>
+                <li><a href="{% url 'floor' 1 %}">Первый этаж</a></li>
+                <li><a href="{% url 'floor' 2 %}">Второй этаж</a></li>
+                <li><a href="{% url 'floor' 3 %}">Третий этаж</a></li>
+                {% if user.is_authenticated %}
+                <!-- Show "Добавить" when the user is logged in -->
+                <li><a href="{% url 'add_exhibit' %}">Добавить</a></li>
+                <li><a href="{% url 'logout' %}">Выйти</a></li>
+                {% else %}
+                <!-- Show "Войти" when the user is not logged in -->
+                <li><a href="{% url 'login' %}">Войти</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <h1>О нашем музее</h1>
+
+
+        <div class="row">
+            <div class="half" style = "padding-left: 2.2vw;">
+                <p>Онлайн видеоигровой музей — это уникальная цифровая платформа, посвященная истории видеоигр,
+                    их развитию и культовому влиянию на культуру и общество.
+                    Здесь каждый посетитель сможет погрузиться в увлекательное путешествие по ключевым моментам в
+                    индустрии видеоигр, начиная с первых пиксельных аркад и заканчивая современными многослойными
+                    мирами виртуальной реальности.</p>
+
+                <p>Музей включает в себя интерактивные экспозиции, где представлены не только исторические факты
+                    и изображения, но и увлекательные игры, которые можно попробовать прямо
+                    в браузере. Виртуальные туры, видеоматериалы, интервью с разработчиками и
+                    ретро-игры дадут глубокое понимание того, как видеоигры эволюционировали с момента
+                    своего появления..</p>
+            </div>
+            <div class="half" style = "padding-left: 10vw">
+                <img src="{% static 'img/hld.jpg' %}" alt="Главная" width="800" height="600">
+            </div>
+        </div>
+    </main>
+</body>
+</html>
